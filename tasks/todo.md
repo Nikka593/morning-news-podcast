@@ -25,3 +25,12 @@
 1. ニュースソース → config.yaml の feeds を編集するだけ
 2. 口調・番組名 → config.yaml の persona / show を編集
 3. コードは触らない設計
+
+
+## 2026-07-08 本番デプロイ
+- [x] リポジトリ作成（Nikka593/morning-news-podcast）
+- [x] ファイル配置・URL書き換え
+- [x] GEMINI_API_KEY登録
+- [x] GitHub Pages有効化
+- [x] テスト実行2回成功（台本3,941文字・音声747秒を確認）
+- [x] 台本の長さ指示を文字数ベースに修正
