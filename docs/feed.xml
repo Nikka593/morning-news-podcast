@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>今日の朝ニュース</title>
+    <link>https://Nikka593.github.io/morning-news-podcast</link>
+    <language>ja</language>
+    <description>毎朝6時、総合・テック・経済のニュースを10分でお届けする自動生成ラジオ。</description>
+    <itunes:author>Naotaro</itunes:author>
+    <itunes:explicit>false</itunes:explicit>
+    <lastBuildDate>Tue, 07 Jul 2026 08:38:28 +0900</lastBuildDate>
+    <item>
+      <title>2026-07-07 の朝ニュース</title>
+      <enclosure url="https://Nikka593.github.io/morning-news-podcast/episodes/2026-07-07.mp3" length="1514925" type="audio/mpeg"/>
+      <guid isPermaLink="false">2026-07-07</guid>
+      <pubDate>Tue, 07 Jul 2026 06:00:00 +0900</pubDate>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>今日の朝ニュース</title>
+<style>
+  :root{
+    --bg:#1a1613; --panel:#221d19; --ink:#efe7dd; --sub:#a89a8c;
+    --amber:#d9a441; --line:#3a322b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Hiragino Sans","Noto Serif JP",serif;
+    line-height:1.75; padding:48px 20px; max-width:720px; margin:0 auto;
+  }
+  h1{font-size:2rem; font-weight:600; letter-spacing:.02em; margin-bottom:6px}
+  .lead{color:var(--sub); margin-bottom:36px}
+  .amber{color:var(--amber)}
+  .card{
+    background:var(--panel); border:1px solid var(--line);
+    border-radius:14px; padding:24px; margin-bottom:20px;
+  }
+  .card h2{font-size:1.05rem; font-weight:600; margin-bottom:14px}
+  audio{width:100%; margin-top:8px}
+  .sub-url{
+    font-family:"IBM Plex Mono",monospace; font-size:.85rem;
+    background:#15110e; border:1px solid var(--line); border-radius:8px;
+    padding:12px 14px; color:var(--amber); word-break:break-all; margin-top:10px;
+  }
+  ol{margin:8px 0 0 20px; color:var(--sub)}
+  ol li{margin-bottom:6px}
+  footer{color:var(--sub); font-size:.8rem; text-align:center; margin-top:40px}
+</style>
+</head>
+<body>
+  <h1>今日の<span class="amber">朝ニュース</span></h1>
+  <p class="lead">毎朝6時、総合・テック・経済のニュースを約10分でお届けする自動生成ラジオ。</p>
+
+  <div class="card">
+    <h2>▶ 今朝のエピソードを聴く</h2>
+    <!-- 最新エピソードは自動で feed.xml に載ります。ここは最新1本の直リンク例 -->
+    <audio controls preload="none" src="./episodes/2026-07-07.mp3"></audio>
+  </div>
+
+  <div class="card">
+    <h2>📱 スマホのPodcastアプリで毎朝聴く</h2>
+    <p style="color:var(--sub)">下のURLを、Apple Podcastの「番組を追加（URLで）」に貼り付けると、毎朝自動で新しい回が届きます。</p>
+    <div class="sub-url">https://Nikka593.github.io/morning-news-podcast/feed.xml</div>
+    <ol>
+      <li>Apple Podcastアプリを開く → 「ライブラリ」タブ</li>
+      <li>右上「・・・」→「番組をURLで追加」</li>
+      <li>上のURLを貼り付けて「追加」</li>
+    </ol>
+  </div>
+
+  <footer>自動生成 · GitHub Actions × Gemini · Simplicity is the ultimate sophistication</footer>
+</body>
+</html>

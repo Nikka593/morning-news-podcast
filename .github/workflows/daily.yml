@@ -1,0 +1,53 @@
+name: 朝ニュースPodcastを自動生成
+
+# 毎朝6:00 JST（=前日21:00 UTC）に実行。手動実行ボタンも用意。
+on:
+  schedule:
+    - cron: "0 21 * * *"   # UTC。JSTに+9時間で朝6時
+  workflow_dispatch: {}     # 画面から手動で回せるボタン
+
+# 生成したMP3やfeed.xmlをリポジトリに書き戻すための権限
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリを取得
+        uses: actions/checkout@v4
+
+      - name: Pythonを準備
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 音声変換ツール(ffmpeg)を導入
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: 必要なライブラリを導入
+        run: pip install -r requirements.txt
+
+      - name: ①ニュース収集
+        run: python scripts/fetch_news.py
+
+      - name: ②台本生成
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/generate_script.py
+
+      - name: ③音声生成
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/generate_audio.py
+
+      - name: ④Podcastフィード生成
+        run: python scripts/build_feed.py
+
+      - name: 生成物をリポジトリに保存
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add docs/
+          git commit -m "朝ニュース $(date +%Y-%m-%d)" || echo "変更なし"
+          git push

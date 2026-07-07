@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>セットアップ手順書 — 朝ニュースPodcast</title>
+<style>
+  :root{
+    --bg:#1a1613; --panel:#221d19; --ink:#efe7dd; --sub:#a89a8c;
+    --amber:#d9a441; --line:#3a322b; --code:#15110e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Hiragino Sans",sans-serif; line-height:1.85;
+    padding:48px 20px; max-width:760px; margin:0 auto;
+  }
+  h1{font-size:1.9rem; font-weight:700; margin-bottom:6px; letter-spacing:.02em}
+  .lead{color:var(--sub); margin-bottom:14px}
+  .amber{color:var(--amber)}
+  .note{
+    background:var(--panel); border-left:3px solid var(--amber);
+    padding:12px 16px; border-radius:6px; color:var(--sub); margin:16px 0;
+    font-size:.92rem;
+  }
+  .step{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:24px 26px; margin:22px 0;
+  }
+  .step-num{
+    display:inline-block; background:var(--amber); color:#1a1613;
+    font-weight:700; border-radius:50%; width:30px; height:30px;
+    text-align:center; line-height:30px; margin-right:10px;
+  }
+  .step h2{display:inline; font-size:1.2rem; font-weight:600}
+  .step p, .step li{color:var(--ink); margin-top:10px}
+  .step ol, .step ul{margin:6px 0 0 26px}
+  .step li{margin-bottom:4px}
+  code{
+    font-family:"IBM Plex Mono",monospace; background:var(--code);
+    padding:2px 7px; border-radius:5px; color:var(--amber); font-size:.88em;
+    word-break:break-all;
+  }
+  pre{
+    background:var(--code); border:1px solid var(--line); border-radius:8px;
+    padding:14px 16px; margin-top:10px; overflow-x:auto;
+    font-family:"IBM Plex Mono",monospace; font-size:.85rem; color:#cbb892;
+  }
+  .term{color:var(--sub); font-size:.86em}
+  hr{border:none; border-top:1px solid var(--line); margin:34px 0}
+  footer{color:var(--sub); font-size:.8rem; text-align:center; margin-top:40px}
+  .time{font-size:.85rem; color:var(--amber)}
+</style>
+</head>
+<body>
+  <h1><span class="amber">朝ニュースPodcast</span> セットアップ手順書</h1>
+  <p class="lead">プログラミング不要。画面の指示どおりに進めれば、毎朝6時に自動で番組が作られ、スマホに届くようになります。所要時間の目安：<span class="time">30〜40分（初回のみ）</span></p>
+
+  <div class="note">
+    <strong>この仕組みの全体像</strong><br>
+    ① GitHub（ギットハブ：無料のプログラム置き場）に、お渡しするファイル一式を置く<br>
+    ② GitHubが毎朝6時に自動で「ニュース収集 → 台本作成 → 音声化 → 配信」を実行<br>
+    ③ できた音声はネット上のURLに公開され、スマホのPodcastアプリに毎朝届く<br>
+    <span class="term">※すべて無料枠の範囲。パソコンは初回設定のときだけ使い、あとは電源を切っていてもGitHub側で動きます。</span>
+  </div>
+
+  <hr>
+
+  <div class="step">
+    <span class="step-num">1</span><h2>GitHubアカウントを作る（持っていれば飛ばしてOK）</h2>
+    <ol>
+      <li><code>https://github.com</code> を開く</li>
+      <li>「Sign up（サインアップ）」からメールアドレス・パスワードを登録</li>
+      <li>登録したユーザー名（例：<code>naotaro</code>）を覚えておく。<span class="term">後でURLに使います。</span></li>
+    </ol>
+  </div>
+
+  <div class="step">
+    <span class="step-num">2</span><h2>お渡ししたファイルを置く「リポジトリ」を作る</h2>
+    <p class="term">リポジトリ＝プロジェクト1つ分のファイル置き場のこと。</p>
+    <ol>
+      <li>GitHub右上の「＋」→「New repository（新しいリポジトリ）」</li>
+      <li>Repository name（名前）に <code>morning-news-podcast</code> と入力</li>
+      <li>「Public（公開）」を選ぶ<br><span class="term">※Podcastアプリから読むにはこの設定が必要です。URLを知っている人だけがアクセスできる状態で、検索には出ません。</span></li>
+      <li>「Create repository」を押す</li>
+    </ol>
+  </div>
+
+  <div class="step">
+    <span class="step-num">3</span><h2>ファイル一式をアップロードする</h2>
+    <ol>
+      <li>お渡しした <code>morning-news-podcast.zip</code> をパソコンで解凍する</li>
+      <li>作ったリポジトリの画面で「uploading an existing file（既存ファイルをアップロード）」のリンクをクリック</li>
+      <li>解凍したフォルダの<strong>中身をすべて</strong>、画面にドラッグ＆ドロップ<br><span class="term">※フォルダごとではなく、中のファイル・フォルダを選んでまとめて入れます。</span></li>
+      <li>下の「Commit changes（変更を確定）」を押す</li>
+    </ol>
+  </div>
+
+  <div class="step">
+    <span class="step-num">4</span><h2>あなたのユーザー名をURLに反映する</h2>
+    <p><code>config.yaml</code> という設定ファイルの中の <code>Nikka593</code> を、あなたのユーザー名に書き換えます。</p>
+    <ol>
+      <li>リポジトリ内の <code>config.yaml</code> をクリック → 右上の鉛筆マーク（Edit）</li>
+      <li><code>base_url:</code> の行の <code>Nikka593</code> を自分の名前に変更<br>
+        例：<code>https://naotaro.github.io/morning-news-podcast</code></li>
+      <li>同じく <code>docs/index.html</code> と <code>docs/setup_guide.html</code> 内の <code>Nikka593</code> も同様に置き換え（任意）</li>
+      <li>「Commit changes」で保存</li>
+    </ol>
+  </div>
+
+  <div class="step">
+    <span class="step-num">5</span><h2>Gemini（無料AI）のAPIキーを取得して登録する</h2>
+    <p class="term">APIキー＝AIを使うための「合言葉」。台本と音声の品質を上げるために使います。無くても動きますが、あると自然になります。</p>
+    <ol>
+      <li><code>https://aistudio.google.com/apikey</code> を開き、Googleでログイン</li>
+      <li>「Create API key（APIキーを作成）」を押し、表示された文字列をコピー<br><span class="term">この文字列は他人に見せないこと。</span></li>
+      <li>リポジトリ画面上部の「Settings（設定）」タブへ</li>
+      <li>左メニュー「Secrets and variables」→「Actions」を開く</li>
+      <li>「New repository secret」を押す</li>
+      <li>Name に <code>GEMINI_API_KEY</code>、Secret に コピーしたキーを貼り付け →「Add secret」</li>
+    </ol>
+  </div>
+
+  <div class="step">
+    <span class="step-num">6</span><h2>自動実行（GitHub Actions）を有効にする</h2>
+    <ol>
+      <li>リポジトリ上部の「Actions」タブを開く</li>
+      <li>「I understand my workflows, go ahead and enable them（有効化）」が出たらクリック</li>
+      <li>左の「朝ニュースPodcastを自動生成」を選ぶ</li>
+      <li>右の「Run workflow」ボタンで、<strong>今すぐ手動でテスト実行</strong>できます</li>
+      <li>数分後、緑のチェックが付けば成功。<span class="term">赤い×が出たらログを確認（多くはAPIキーの貼り間違い）。</span></li>
+    </ol>
+  </div>
+
+  <div class="step">
+    <span class="step-num">7</span><h2>公開ページ（GitHub Pages）を有効にする</h2>
+    <ol>
+      <li>「Settings」→ 左メニュー「Pages」を開く</li>
+      <li>Source を「Deploy from a branch」に</li>
+      <li>Branch を <code>main</code>、フォルダを <code>/docs</code> に設定 →「Save」</li>
+      <li>1〜2分待つと、公開URLが表示されます</li>
+    </ol>
+  </div>
+
+  <div class="step">
+    <span class="step-num">8</span><h2>スマホのPodcastアプリに登録する</h2>
+    <p>あなたの番組URL（末尾が <code>/feed.xml</code>）を控えます。<br>
+    例：<code>https://naotaro.github.io/morning-news-podcast/feed.xml</code></p>
+    <p><strong>iPhone（Apple Podcast）の場合：</strong></p>
+    <ol>
+      <li>Podcastアプリ →「ライブラリ」タブ</li>
+      <li>右上「・・・」→「番組をURLで追加」</li>
+      <li>上のURLを貼り付けて「追加」</li>
+    </ol>
+    <p class="term">これで、毎朝6時すぎに新しい回が自動で届くようになります。</p>
+  </div>
+
+  <hr>
+
+  <div class="note">
+    <strong>覚えておくと便利なこと</strong><br>
+    ・<strong>ニュースの種類を変えたい</strong> → <code>config.yaml</code> の <code>feeds:</code> を編集<br>
+    ・<strong>語り口を変えたい</strong> → <code>config.yaml</code> の <code>tone:</code> を編集<br>
+    ・<strong>男性の声にしたい</strong> → <code>gender: "male"</code> に変更<br>
+    ・<strong>配信が6時ぴったりでない</strong> → GitHubの自動実行は混雑時に数十分遅れることがあります（仕様です）<br>
+    ・<strong>編集はすべてブラウザ上でOK</strong>。パソコンにソフトを入れる必要はありません。
+  </div>
+
+  <footer>朝ニュースPodcast · セットアップ手順書 · Simplicity is the ultimate sophistication</footer>
+</body>
+</html>
