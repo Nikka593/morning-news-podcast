@@ -39,11 +39,12 @@ def build_prompt(cfg, items):
     return f"""{tone}
 
 今日は {today_str()} です。
-以下の{len(items)}本のニュースを、1本あたり40〜50秒くらいの分量で、
+以下の{len(items)}本のニュースを、1本あたり300〜360文字で、
 順番に紹介するラジオ台本を書いてください。
 - ジャンルが切り替わるところでは「続いては○○の話題です」と一言はさむ
 - 難しい言葉は一言かみ砕く
-- 全体で約10分になるボリューム
+- 全体で必ず3,800〜4,500文字にする（読み上げると約10分になる分量）。
+  背景説明や「これはつまり…」という一言解説を加えて、各ニュースをしっかり膨らませる
 - 出力は「読み上げる文章そのもの」だけ。ト書きや話者名・記号は書かない
 
 【今日のニュース】
@@ -83,6 +84,13 @@ def main():
     if os.environ.get("GEMINI_API_KEY"):
         try:
             script = generate_with_gemini(prompt)
+            if len(script) < 3200:  # 約10分に足りない場合は一度だけ膨らませ直す
+                print(f"台本が{len(script)}文字と短いため、増量を再依頼")
+                script = generate_with_gemini(
+                    prompt
+                    + f"\n\n【重要】先ほどの案は{len(script)}文字で短すぎました。"
+                    + "各ニュースに背景や補足を加え、全体を必ず3,800文字以上にしてください。"
+                )
             print("台本生成: Gemini")
         except Exception as e:
             print(f"Gemini失敗（{e}）→ テンプレートで代替")
