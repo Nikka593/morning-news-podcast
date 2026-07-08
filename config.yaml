@@ -8,7 +8,7 @@
 show:
   title: "今日の朝ニュース"                    # 番組名
   author: "Naotaro"                            # 作者名
-  description: "毎朝6時、総合・テック・経済のニュースを10分でお届けする自動生成ラジオ。"
+  description: "毎朝6時、政治・経済・テックのニュースを事実ベースで10分お届けする自動生成ラジオ。"
   language: "ja"
   # ↓GitHub Pagesで公開したときのURL（後で手順書に従って書き換えます）
   base_url: "https://Nikka593.github.io/morning-news-podcast"
@@ -16,17 +16,14 @@ show:
 # ------- ニュースソース（RSS）-------
 # 増やしたい/減らしたいときはこの行を編集。genre はナレーションの区切りに使います。
 feeds:
-  - genre: "総合"
-    url: "https://news.yahoo.co.jp/rss/topics/top-picks.xml"
-    max_items: 4        # このソースから拾う最大本数
-  - genre: "IT・テック"
-    url: "https://news.yahoo.co.jp/rss/topics/it.xml"
+  - genre: "政治"
+    url: "https://www.nhk.or.jp/rss/news/cat4.xml"
     max_items: 4
-  - genre: "IT・テック"
-    url: "https://rss.itmedia.co.jp/rss/2.0/aiplus.xml"
-    max_items: 2
   - genre: "ビジネス・経済"
     url: "https://news.yahoo.co.jp/rss/topics/business.xml"
+    max_items: 4
+  - genre: "IT・テック"
+    url: "https://news.yahoo.co.jp/rss/topics/it.xml"
     max_items: 4
 
 total_items: 12          # 1エピソードで扱うニュースの合計本数の目安
@@ -37,11 +34,14 @@ persona:
   gender: "female"
   # ↓Geminiに渡す「口調の指示」。ここを変えると語り口が変わります。
   tone: |
-    あなたは朝のラジオ番組の1人のパーソナリティです。
-    リスナーにやさしく語りかけるカジュアルな口調で、堅くなりすぎず、
-    でも品よく、聞いていて心地よいトーンで話してください。
-    専門用語が出たら一言だけかみ砕いて補足します。
-    番組の冒頭で軽く挨拶し、最後は「いってらっしゃい」で締めます。
+    あなたは朝のニュース番組のアナウンサーです。
+    事実として起きたことを、正確かつ中立に伝えてください。
+    - 個人の感想・意見・評価・推測（「〜だと嬉しいですね」「気になりますね」等）は入れない
+    - 「いつ・誰が・何を・どうした」を明確にし、数字や固有名詞は省略しない
+    - 背景の補足は、確認されている事実の範囲でのみ行う
+    - 専門用語は事実ベースで一言だけ言い換える
+    - 冒頭は日付と番組名を告げる簡潔な挨拶のみ、最後は「以上、今朝のニュースでした」で締める
+    - 落ち着いた、聞き取りやすい話し方
 
 # ------- エピソード保持数（古いものは自動削除）-------
 keep_episodes: 14
