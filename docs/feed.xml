@@ -7,7 +7,13 @@
     <description>毎朝6時、政治・経済・テックのニュースを事実ベースで10分お届けする自動生成ラジオ。</description>
     <itunes:author>Naotaro</itunes:author>
     <itunes:explicit>false</itunes:explicit>
-    <lastBuildDate>Wed, 08 Jul 2026 20:06:31 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2026 07:16:34 +0900</lastBuildDate>
+    <item>
+      <title>2026-07-09 の朝ニュース</title>
+      <enclosure url="https://Nikka593.github.io/morning-news-podcast/episodes/2026-07-09.mp3" length="7862733" type="audio/mpeg"/>
+      <guid isPermaLink="false">2026-07-09</guid>
+      <pubDate>Thu, 09 Jul 2026 06:00:00 +0900</pubDate>
+    </item>
     <item>
       <title>2026-07-08 の朝ニュース</title>
       <enclosure url="https://Nikka593.github.io/morning-news-podcast/episodes/2026-07-08.mp3" length="7926957" type="audio/mpeg"/>
