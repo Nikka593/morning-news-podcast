@@ -7,7 +7,13 @@
     <description>毎朝6時、政治・経済・ビジネスモデル事例・テック・AIのニュースを事実ベースでお届けする自動生成ラジオ。</description>
     <itunes:author>Naotaro</itunes:author>
     <itunes:explicit>false</itunes:explicit>
-    <lastBuildDate>Sat, 05 Sep 2026 07:58:18 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 06 Sep 2026 07:47:22 +0900</lastBuildDate>
+    <item>
+      <title>2026-09-06 の朝ニュース</title>
+      <enclosure url="https://Nikka593.github.io/morning-news-podcast/episodes/2026-09-06.mp3" length="7862733" type="audio/mpeg"/>
+      <guid isPermaLink="false">2026-09-06</guid>
+      <pubDate>Sun, 06 Sep 2026 06:00:00 +0900</pubDate>
+    </item>
     <item>
       <title>2026-09-05 の朝ニュース</title>
       <enclosure url="https://Nikka593.github.io/morning-news-podcast/episodes/2026-09-05.mp3" length="7675821" type="audio/mpeg"/>
@@ -85,12 +91,6 @@
       <enclosure url="https://Nikka593.github.io/morning-news-podcast/episodes/2026-08-23.mp3" length="7562061" type="audio/mpeg"/>
       <guid isPermaLink="false">2026-08-23</guid>
       <pubDate>Sun, 23 Aug 2026 06:00:00 +0900</pubDate>
-    </item>
-    <item>
-      <title>2026-08-21 の朝ニュース</title>
-      <enclosure url="https://Nikka593.github.io/morning-news-podcast/episodes/2026-08-21.mp3" length="12369069" type="audio/mpeg"/>
-      <guid isPermaLink="false">2026-08-21</guid>
-      <pubDate>Fri, 21 Aug 2026 06:00:00 +0900</pubDate>
     </item>
   </channel>
 </rss>
